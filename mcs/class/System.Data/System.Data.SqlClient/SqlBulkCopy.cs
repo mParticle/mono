@@ -179,7 +179,8 @@ namespace System.Data.SqlClient {
 							 DestinationTableName + " set fmtonly off;" +
 							 "exec sp_tablecollations_90 '" +
 							 DestinationTableName + "'",
-							 connection);
+							 connection,
+							 externalTransaction);
 			SqlDataReader reader = cmd.ExecuteReader ();
 			int i = 0; // Skipping 1st result
 			do {
@@ -386,7 +387,8 @@ namespace System.Data.SqlClient {
 			if ((copyOptions & SqlBulkCopyOptions.KeepIdentity) == SqlBulkCopyOptions.KeepIdentity) {
 				SqlCommand cmd = new SqlCommand ("set identity_insert " +
 								 table.TableName + " on",
-								 connection);
+								 connection,
+								 externalTransaction);
 				cmd.ExecuteScalar ();
 			}
 			DataTable [] columnMetaDataTables = GetColumnMetaData ();
