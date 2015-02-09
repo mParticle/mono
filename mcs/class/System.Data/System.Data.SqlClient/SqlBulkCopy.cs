@@ -402,6 +402,9 @@ namespace System.Data.SqlClient {
 			}
 
 			SqlCommand tmpCmd = new SqlCommand ();
+			if(externalTransaction != null){
+				tmpcmd.Transaction = externalTransaction;
+			}
 			TdsBulkCopy blkCopy = new TdsBulkCopy ((Tds)connection.Tds);
 			if (((Tds)connection.Tds).TdsVersion >= TdsVersion.tds70) {
 				string statement = "insert bulk " + DestinationTableName + " (";
