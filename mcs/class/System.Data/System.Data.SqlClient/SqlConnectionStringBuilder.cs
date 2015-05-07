@@ -646,9 +646,10 @@ namespace System.Data.SqlClient
 			if (!ContainsKey (keyword))
 				return false;
 			keyword = keyword.ToUpper ().Trim ();
+			//Commenting out password check. https://bugzilla.xamarin.com/show_bug.cgi?id=29823
 			// Assuming passwords cannot be serialized.
-			if (_keywords [keyword] == "Password")
-				return false;
+			//if (_keywords [keyword] == "Password")
+			//	return false;
 			return base.ShouldSerialize (_keywords [keyword]);
 		}
 
