@@ -647,8 +647,8 @@ namespace System.Data.SqlClient
 				return false;
 			keyword = keyword.ToUpper ().Trim ();
 			// Assuming passwords cannot be serialized.
-			if (_keywords [keyword] == "Password")
-				return false;
+			//if (_keywords [keyword] == "Password")
+			//	return false;
 			return base.ShouldSerialize (_keywords [keyword]);
 		}
 
